@@ -1,0 +1,7 @@
+created: 20151115195956492
+modified: 20151115200250928
+title: Introduction
+
+The <$text text="""<$calc>""" /> widget is a simple wrapper around [ext[math.js|http://mathjs.org/]]'s eval function.  For those of you not familiar with math.js and eval, the short of it is that eval is able to intelligently evaluate mathematical expressions while not exposing th typical security issues inherent in eval.  
+
+In addition to just being able to evaluate standard expressions, I've added support for TextReferences among the code, so now you can store data in fields or data tiddlers and write expressions based on that data.

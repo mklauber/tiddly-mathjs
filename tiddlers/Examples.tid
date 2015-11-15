@@ -1,0 +1,12 @@
+created: 20151115194846471
+modified: 20151115195948253
+test: 10
+title: Examples
+
+;<$text text="""Result is <$calc>1 + 1</$calc>""" />
+:Result is <$calc>1 + 1</$calc>
+
+;<$text text="""Result is <$calc>{{!!test}} + 1</$calc>""" />
+:Result is <$calc>{{!!test}} + 1</$calc>
+
+It's also possible to use the list widget inside the <$text text="""<$calc>""" /> widget to create sums of lists.
