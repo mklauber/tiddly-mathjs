@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - '0.10'
 script:
-- tiddlywiki . --rendertiddler $:/core/save/all index.html text/plain
+- tiddlywiki . --output . --rendertiddler $:/core/save/all index.html text/plain
 after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 travis-ci.key
@@ -10,6 +10,7 @@ after_success:
 - git config --global push.default simple
 - git remote add deploy git@github.com:mklauber/tiddly-mathjs.git
 - git checkout -b gh-pages
+- git rm . -r
 - git add index.html
 - git push deploy
 before_install:
