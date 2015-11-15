@@ -1,5 +1,5 @@
 /*\
-title: $:/core/modules/widgets/text.js
+title: $:/plugins/mklauber/math.js/calc.js
 type: application/javascript
 module-type: widget
 
@@ -12,7 +12,7 @@ Text node widget
 /*global $tw: false */
 "use strict";
 
-var math = require("$:/mklauber/mathjs/math.js");
+var math = require("$:/plugins/mklauber/math.js/math.js");
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 

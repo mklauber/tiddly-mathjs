@@ -4,7 +4,5 @@
     "author": "Matthew Lauber",
     "version": "1.0.0",
     "core-version": ">=5.0.0",
-    "source": "$:/plugins/mklauber/mathJS",
-    "plugin-type": "plugin",
 	"list": ""
 }

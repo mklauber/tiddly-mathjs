@@ -1,3 +1,8 @@
+/*\
+title: $:/plugins/mklauber/math.js/math.js
+type: application/javascript
+module-type: library
+\*/
 /**
  * math.js
  * https://github.com/josdejong/mathjs

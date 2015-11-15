@@ -1,5 +1,5 @@
 {
-	"plugins": ["mklauber/mathjs"],
+	"plugins": ["mklauber/mathJS"],
 	"themes": [
 		"tiddlywiki/vanilla",
 		"tiddlywiki/snowwhite"
