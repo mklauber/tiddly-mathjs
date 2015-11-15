@@ -9,7 +9,7 @@ after_success:
 - ssh-add travis-ci.key
 - git config --global push.default simple
 - git config --global user.email "your@example.com"
-- git config --global user.name "Travis-CI'
+- git config --global user.name "Travis-CI"
 - git remote add deploy git@github.com:mklauber/tiddly-mathjs.git
 - git checkout -b gh-pages
 - git add -f index.html
