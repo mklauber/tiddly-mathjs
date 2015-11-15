@@ -1,0 +1,10 @@
+{
+    "title": "$:/plugins/mklauber/math.js",
+    "description": "Add a calc widget that evluates expression using Math.JS",
+    "author": "Matthew Lauber",
+    "version": "1.0.0",
+    "core-version": ">=5.0.0",
+    "source": "$:/plugins/mklauber/math.js",
+    "plugin-type": "plugin",
+	"list": ""
+}
