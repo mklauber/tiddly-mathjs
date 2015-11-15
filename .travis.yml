@@ -10,7 +10,8 @@ after_success:
   - eval "$(ssh-agent -s)" #start the ssh agent
   - chmod 600 .travis/deploy_key.pem # this key should have push access
   - ssh-add .travis/deploy_key.pem
+  - git config --global push.default simple
   - git remote add deploy git@github.com:mklauber/tiddly-mathjs.git
-  - git co -b gh-pages
+  - git checkout -b gh-pages
   - git add index.html
   - git push deploy
