@@ -17,7 +17,7 @@ after_success:
 - git fetch deploy
 - git checkout --track deploy/gh-pages
 - cp tmp.html $VERSION.html
-- cp latest.html
+- cp tmp.html latest.html
 - git add -f latest.html $VERSION.html
 - git commit -m "Build $VERSION"
 - git push --force deploy
