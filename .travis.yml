@@ -2,11 +2,8 @@ language: node_js
 node_js:
 - '0.10'
 
-before_script:
-- VERSION=`cat plugins/math.js/plugin.info | grep '"version"' | cut -d '"' -f 4`
-
 script:
-- tiddlywiki . --output . --rendertiddler $:/core/save/all $VERSION.html text/plain
+- tiddlywiki . --output . --rendertiddler $:/core/save/all tmp.html text/plain
 
 after_success:
 - eval "$(ssh-agent -s)"
@@ -18,7 +15,9 @@ after_success:
 - git remote add deploy git@github.com:mklauber/tiddly-mathjs.git
 - git fetch deploy
 - git checkout --track deploy/gh-pages
-- cp $VERSION.html latest.html
+- VERSION=`cat plugins/math.js/plugin.info | grep '"version"' | cut -d '"' -f 4`
+- cp tmp.html $VERSION.html
+- cp latest.html
 - git add -f latest.html $VERSION.html
 - git commit -m "Build $VERSION"
 - git push --force deploy
