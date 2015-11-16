@@ -2,29 +2,35 @@ language: node_js
 node_js:
 - '0.10'
 
+# Decrypts the encypted SSH key used to push to github.com
+before_install:
+- openssl aes-256-cbc -K $encrypted_c31c608db160_key -iv $encrypted_c31c608db160_iv
+  -in travis-ci.key.enc -out travis-ci.key -d
+
 script:
 - tiddlywiki . --output . --rendertiddler $:/core/save/all tmp.html text/plain
 
 after_success:
-- eval "$(ssh-agent -s)"
-- chmod 600 travis-ci.key
-- ssh-add travis-ci.key
-- git config --global push.default simple
-- git config --global user.email "your@example.com"
-- git config --global user.name "Travis-CI"
+- eval "$(ssh-agent -s)"							# 
+- chmod 600 travis-ci.key							# 
+- ssh-add travis-ci.key								# Setup SSH to be able to push 
+- git config --global push.default simple			# to github.
+- git config --global user.email "your@example.com"	# 
+- git config --global user.name "Travis-CI"			# 
+# Determine the version string
 - VERSION=`cat plugins/math.js/plugin.info | grep '"version"' | cut -d '"' -f 4`
+# Setup a git remote pointing to the source
 - git remote add deploy git@github.com:mklauber/tiddly-mathjs.git
 - git fetch deploy
+# Tag the current commit that was used to build with the $VERSION and push it to github
 - git tag -am "Version $VERSION" $VERSION
-- git push --tags -f deploy
-- git checkout --track deploy/gh-pages
-- cp tmp.html $VERSION.html
-- cp tmp.html latest.html
-- cp tmp.html index.html
-- git add -f index.html latest.html $VERSION.html
-- git commit -m "Build $VERSION"
-- git push --force deploy
+- git push --tags -f deploy # Push the tag to github
+# Add the new version to the gh-pages branch
+- git checkout --track deploy/gh-pages # Change to the pages branch
+- cp tmp.html $VERSION.html	# Save this file under the long term version
+- cp tmp.html latest.html	# Save it as the latest too.
+- cp tmp.html index.html	# Save it as index.html for conviencence
+- git add -f index.html latest.html $VERSION.html # add all three to git
+- git commit -m "Build $VERSION" # Commit with $VERSION in the message
+- git push --force deploy # Push the new version of the pages to github.
 
-before_install:
-- openssl aes-256-cbc -K $encrypted_c31c608db160_key -iv $encrypted_c31c608db160_iv
-  -in travis-ci.key.enc -out travis-ci.key -d
