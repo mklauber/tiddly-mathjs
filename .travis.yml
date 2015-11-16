@@ -11,6 +11,7 @@ after_success:
 - git config --global user.email "your@example.com"
 - git config --global user.name "Travis-CI"
 - git remote add deploy git@github.com:mklauber/tiddly-mathjs.git
+- git fetch deploy
 - git checkout --track deploy/gh-pages
 - git add -f latest.html
 - git commit -m "Build"
