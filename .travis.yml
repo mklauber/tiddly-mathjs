@@ -1,9 +1,8 @@
 language: node_js
 node_js:
 - '0.10'
-script:
-- tiddlywiki . --output . --rendertiddler $:/core/save/all latest.html text/plain
-after_success:
+
+before_script:
 - eval "$(ssh-agent -s)"
 - chmod 600 travis-ci.key
 - ssh-add travis-ci.key
@@ -13,6 +12,10 @@ after_success:
 - git remote add deploy git@github.com:mklauber/tiddly-mathjs.git
 - git fetch deploy
 - git checkout --track deploy/gh-pages
+
+script:
+- tiddlywiki . --output . --rendertiddler $:/core/save/all latest.html text/plain
+after_success:
 - VERSION=`cat plugins/math.js/plugin.info | grep '"version"' | cut -d '"' -f 4`
 - cp latest.html $VERSION.html
 - git add -f latest.html $VERSION.html
