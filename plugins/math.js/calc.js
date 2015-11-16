@@ -36,11 +36,13 @@ CalcWidget.prototype.render = function(parent,nextSibling) {
 	this.expression = this.document.createElement("div");
 	this.renderChildren(this.expression,nextSibling);
 	
-	var text;
+	var text = "";
 	try {
 		text = math.eval(this.expression.textContent);
 	} catch(err) {
-		text = "Unable to parse '" + this.expression.textContent + "'";
+		if(!this.silence){
+			text = "Unable to parse '" + this.expression.textContent + "'";
+		}
 	}
 	var textNode = this.document.createTextNode(text);
 	parent.insertBefore(textNode,nextSibling);
@@ -51,6 +53,7 @@ CalcWidget.prototype.render = function(parent,nextSibling) {
 Compute the internal state of the widget
 */
 CalcWidget.prototype.execute = function() {
+	this.silence = this.getAttribute("silence",false);
 	var calc = {
 		type: "element",
 		tag: "div",
