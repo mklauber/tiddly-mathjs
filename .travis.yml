@@ -12,10 +12,10 @@ after_success:
 - git config --global push.default simple
 - git config --global user.email "your@example.com"
 - git config --global user.name "Travis-CI"
+- VERSION=`cat plugins/math.js/plugin.info | grep '"version"' | cut -d '"' -f 4`
 - git remote add deploy git@github.com:mklauber/tiddly-mathjs.git
 - git fetch deploy
 - git checkout --track deploy/gh-pages
-- VERSION=`cat plugins/math.js/plugin.info | grep '"version"' | cut -d '"' -f 4`
 - cp tmp.html $VERSION.html
 - cp latest.html
 - git add -f latest.html $VERSION.html
