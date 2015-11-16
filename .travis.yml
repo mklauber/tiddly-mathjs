@@ -21,7 +21,10 @@ after_success:
 - cp tmp.html index.html
 - git add -f index.html latest.html $VERSION.html
 - git commit -m "Build $VERSION"
+- git tag -am "Version $VERSION" $VERSION
 - git push --force deploy
+- git push --tags -f deploy
+
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_c31c608db160_key -iv $encrypted_c31c608db160_iv
