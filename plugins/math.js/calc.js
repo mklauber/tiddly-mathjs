@@ -38,7 +38,7 @@ CalcWidget.prototype.render = function(parent,nextSibling) {
 	
 	var text = "";
 	try {
-		text = math.eval(this.expression.textContent);
+		text = math.eval(this.expression.textContent.trim());
 	} catch(err) {
 		if(!this.silence){
 			text = "Unable to parse '" + this.expression.textContent + "'";
