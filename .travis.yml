@@ -11,10 +11,7 @@ before_install:
   -in travis-ci.key.enc -out travis-ci.key -d
 
 script:
-- which tiddlywiki
-- ls -l
 - cd editions/math.js
-- which tiddlywiki
 - ../../node_modules/.bin/tiddlywiki --build
 
 after_success:
