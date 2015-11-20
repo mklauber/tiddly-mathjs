@@ -2,15 +2,13 @@ language: node_js
 node_js:
 - '0.10'
 
-env:
-- TIDDLYWIKI_PLUGIN_PATH:$TRAVIS_BUILD_DIR/plugins/
-
 # Decrypts the encypted SSH key used to push to github.com
 before_install:
 - openssl aes-256-cbc -K $encrypted_c31c608db160_key -iv $encrypted_c31c608db160_iv
   -in travis-ci.key.enc -out travis-ci.key -d
 
 script:
+- export TIDDLYWIKI_PLUGIN_PATH=$TRAVIS_BUILD_DIR/plugins/
 - echo $TIDDLYWIKI_PLUGIN_PATH
 - cd editions/math.js
 - ../../node_modules/.bin/tiddlywiki --build
