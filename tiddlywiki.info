@@ -1,7 +1,0 @@
-{
-	"plugins": ["mklauber/mathJS"],
-	"themes": [
-		"tiddlywiki/vanilla",
-		"tiddlywiki/snowwhite"
-	]
-}
