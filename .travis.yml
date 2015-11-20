@@ -8,9 +8,13 @@ before_install:
   -in travis-ci.key.enc -out travis-ci.key -d
 
 script:
-- tiddlywiki . --output . --rendertiddler $:/core/save/all tmp.html text/plain
+- export TIDDLYWIKI_PLUGIN_PATH=$TRAVIS_BUILD_DIR/plugins/
+- echo $TIDDLYWIKI_PLUGIN_PATH
+- cd editions/math.js
+- ../../node_modules/.bin/tiddlywiki --build
 
 after_success:
+- cd $TRAVIS_BUILD_DIR
 - eval "$(ssh-agent -s)"							# 
 - chmod 600 travis-ci.key							# 
 - ssh-add travis-ci.key								# Setup SSH to be able to push 
