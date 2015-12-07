@@ -34,7 +34,7 @@ CalcWidget.prototype.render = function(parent,nextSibling) {
 	this.execute();
 
 	this.expression = this.document.createElement("div");
-	this.renderChildren(this.expression,nextSibling);
+	this.renderChildren(this.expression);
 	
 	var text = "";
 	try {
